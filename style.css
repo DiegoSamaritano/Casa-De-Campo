@@ -1,0 +1,49 @@
+body {
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Checkbox de "marcar como pagado": lo dibujamos nosotros en vez de usar
+   el cuadrito por defecto del navegador, para que combine con el resto
+   del diseño (redondeado, con el color de marca al marcarlo). */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    border: 1.5px solid #d1d5db;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+input[type="checkbox"]:hover {
+    border-color: #9ca3af;
+}
+input[type="checkbox"]:checked {
+    background-color: #5b45ea;
+    border-color: #5b45ea;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 11px 11px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-7'/%3E%3C/svg%3E");
+}
+input[type="checkbox"]:focus-visible {
+    outline: 2px solid #d9d3fd;
+    outline-offset: 2px;
+}
+
+/* Tarjetas plegables de cada persona: quitamos el triangulito nativo
+   del navegador; la flechita propia (SVG) gira al abrir con CSS. */
+#lista details > summary {
+    list-style: none;
+}
+#lista details > summary::-webkit-details-marker {
+    display: none;
+}
+#lista details > summary .chevron {
+    transition: transform 0.15s ease;
+}
+#lista details[open] > summary .chevron {
+    transform: rotate(90deg);
+}
